@@ -1,5 +1,7 @@
 package com.yhaobin;
 
+import com.yhaobin.util.SwapUtil;
+
 /**
  * 题：给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
  *
@@ -55,14 +57,12 @@ public class Number283 {
         int i = 0;
         for (int j=0;j<nums.length;j++ ){
             if (nums[j] != 0)
-                swap(nums, i++, j);
+                if (i == j) {
+                    i++;
+                    continue;
+                }
+                SwapUtil.swap(nums, i++, j);
         }
-    }
-
-    private static void swap(int[] nums, int i, int j){
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
     }
 
 }
